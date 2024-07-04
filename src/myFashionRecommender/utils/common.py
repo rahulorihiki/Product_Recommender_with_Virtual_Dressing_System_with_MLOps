@@ -12,7 +12,6 @@ import base64
 
 '''
 1. MOST OF THE UTILITY FUNCTIONS WRITTEN BELOW i WONT BE USING IN THE PROJECT. I HAVE WRITTEN THEM FOR FUTURE REFERENCE.
-2. CONFIGBOX AND ENSURE_ANNOTATIONS HAVE BEEN EXPLAINED IN THE TRIALS.IPYNB FILE INSIDE THE RESEARCH FOLDER.
 '''
 
 # The below code is to read the yaml file (yaml file is a file that stores configuration details in a key-value pair format) and return the data in a ConfigBox format. 
@@ -43,7 +42,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     
 
 
-@ensure_annotations
+@ensure_annotations #It makes sure that the function is given that input only which is has been defined to take and also the function only returns output which it has been defined to give as output. If the function is given any other input or returns any other output, it will throw an error.
 def create_directories(path_to_directories: list, verbose=True):
     """create list of directories
 
