@@ -5,4 +5,17 @@ joblib
 notebook
 gdown
 tensorflow==2.12.0
+numpy
+tqdm
+pillow
+dvc
+flask
+flask-sqlalchemy
+flask-bootstrap
+flask-login
+flask-bcrypt
+flask-wtf
+scikit-learn
+flask-paginate
+email-validator
 -e .
