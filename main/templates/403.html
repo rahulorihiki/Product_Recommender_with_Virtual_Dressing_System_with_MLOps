@@ -1,0 +1,38 @@
+{% extends 'errorbase.html' %} {% block title %}Error Page{% endblock title %}
+{% block carousel %}
+
+<img
+  src="https://cdn.dribbble.com/users/1192256/screenshots/6290585/1._friday.gif"
+/>
+<h1
+  class="error-text"
+  style="text-align: center; padding: 20px; font-family: Cursive"
+>
+  Whoops, You are not authorized to move any further.
+</h1>
+<p
+  class="text"
+  style="text-align: center; font-size: 20px; margin-bottom: 40px"
+>
+  Please check that the Web site address is spelled correctly.Or,
+</p>
+<div
+  class="btn1 mb-4"
+  style="text-align: center; font-size: 20px; margin-bottom: 40px"
+>
+  <a
+    class="error"
+    href="{{url_for('contact')}}"
+    style="
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      text-decoration: none;
+      padding: 15px;
+      background: #6200ee;
+      color: #fff;
+      border-radius: 10px;
+    "
+    >Go to Homepage</a
+  >
+</div>
+{% endblock carousel %}

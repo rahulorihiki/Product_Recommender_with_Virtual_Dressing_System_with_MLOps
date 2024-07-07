@@ -1,0 +1,3 @@
+INCLUDE_TOP: False
+WEIGHTS: "imagenet"
+IMAGE_SIZE: [224, 224, 3] # as per Resnet Model, to know the input size for other models check the keras application documentation then select the model you are using and there you can see about all the parameters of the model along with the input size.

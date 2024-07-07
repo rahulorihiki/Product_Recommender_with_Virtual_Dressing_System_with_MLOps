@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>EShopper - {% block title %}{% endblock title %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free HTML Templates" name="keywords" />
+    <meta content="Free HTML Templates" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+    <link href="../static/img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <!-- <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
+    <link
+      href="../static/lib/owlcarousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <link href="../static/css/style.css" rel="stylesheet" />
+
+    <style>
+      #sid {
+        box-sizing: border-box;
+        /* background-image: url('searchicon.png'); */
+        background-position: 14px 12px;
+        background-repeat: no-repeat;
+        font-size: 16px;
+        padding: 14px 20px 12px 45px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      #sid:focus {
+        outline: 3px solid #ddd;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        /* display: none; */
+        position: absolute;
+        background-color: #f6f6f6;
+        min-width: 230px;
+        overflow: auto;
+        border: 1px solid #ddd;
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown a:hover {
+        background-color: #ddd;
+      }
+
+      #image123 {
+        border: 1px solid #ddd;
+        border-radius: 10%;
+        padding: 5px;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+      <div class="row bg-secondary py-2 px-xl-5">
+        <div class="col-lg-6 d-none d-lg-block">
+          <div class="d-inline-flex align-items-center">
+            <a class="text-dark" href="">FAQs</a>
+            <span class="text-muted px-2">|</span>
+            <a class="text-dark" href="">Help</a>
+            <span class="text-muted px-2">|</span>
+            <a class="text-dark" href="">Support</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+          <div class="d-inline-flex align-items-center">
+            <a class="text-dark px-2" href="">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="text-dark px-2" href="">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a class="text-dark px-2" href="">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a class="text-dark px-2" href="">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a class="text-dark pl-2" href="">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center py-3 px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+          <a href="" class="text-decoration-none">
+            <h1 class="m-0 display-5 font-weight-semi-bold">
+              <span class="text-primary font-weight-bold border px-3 mr-1"
+                >E</span
+              >Shopper
+            </h1>
+          </a>
+        </div>
+        <div class="dropdown">
+          <div id="myDropdownmenu" class="dropdown-content" style="z-index: 4">
+            <div class="text-left">
+              <form action="">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search for products"
+                    onkeyup="sname_ret()"
+                    id="sid"
+                    style="width: 665px"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text bg-transparent text-primary">
+                      <i class="fa fa-search"></i>
+                    </span>
+                  </div>
+                </div>
+              </form>
+              <a
+                class="dropdown-item"
+                href="#"
+                id="suggestion1"
+                style="display: none"
+                onclick="recieve_it(1)"
+                >Argentina</a
+              >
+              <a
+                class="dropdown-item"
+                href="#"
+                id="suggestion2"
+                style="display: none"
+                onclick="recieve_it(2)"
+                >Afganistan</a
+              >
+              <a
+                class="dropdown-item"
+                href="#"
+                id="suggestion3"
+                style="display: none"
+                onclick="recieve_it(3)"
+                >Brazil</a
+              >
+              <a
+                class="dropdown-item"
+                href="#"
+                id="suggestion4"
+                style="display: none"
+                onclick="recieve_it(4)"
+                >Sri Lanka</a
+              >
+              <a
+                class="dropdown-item"
+                href="#"
+                id="suggestion5"
+                style="display: none"
+                onclick="recieve_it(5)"
+                >Nepal</a
+              >
+              <a
+                class="dropdown-item"
+                href="#"
+                id="suggestion6"
+                style="display: none"
+                onclick="recieve_it(6)"
+                >India</a
+              >
+              <!-- <hr class="dropdown-divider"> -->
+              <a
+                class="dropdown-item"
+                href="#"
+                id="suggestion7"
+                style="display: none"
+                onclick="recieve_it(7)"
+                >Others</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5">
+      <div class="row border-top px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+          <a
+            class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+            data-toggle="collapse"
+            href="#navbar-vertical"
+            style="height: 65px; margin-top: -1px; padding: 0 30px"
+          >
+            <h6 class="m-0">Categories</h6>
+            <i class="fa fa-angle-down text-dark"></i>
+          </a>
+          <nav
+            class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
+            id="navbar-vertical"
+          >
+            <div class="navbar-nav w-100 overflow-hidden" style="height: 210px">
+              <div class="nav-item dropdown">
+                <a href="#" class="nav-link" data-toggle="dropdown"
+                  >Apparels <i class="fa fa-angle-down float-right mt-1"></i
+                ></a>
+                <div
+                  class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0"
+                >
+                  <a
+                    href="{{url_for('search_result_subcategory' , a = 'Topwear')}}"
+                    class="dropdown-item"
+                    >Topwear</a
+                  >
+                  <a
+                    href="{{url_for('search_result_subcategory' , a = 'Bottomwear')}}"
+                    class="dropdown-item"
+                    >Bottomwear</a
+                  >
+                  <a
+                    href="{{url_for('search_result_subcategory' , a = 'Innerwear')}}"
+                    class="dropdown-item"
+                    >Innerwear</a
+                  >
+                  <a
+                    href="{{url_for('search_result_subcategory' , a = 'Headwear')}}"
+                    class="dropdown-item"
+                    >Headwwear</a
+                  >
+                </div>
+              </div>
+              <div class="nav-item dropdown">
+                <a href="#" class="nav-link" data-toggle="dropdown"
+                  >Footwear <i class="fa fa-angle-down float-right mt-1"></i
+                ></a>
+                <div
+                  class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0"
+                >
+                  <a
+                    href="{{url_for('search_result' , a = 'Casual Shoes')}}"
+                    class="dropdown-item"
+                    >Shoes</a
+                  >
+                  <a
+                    href="{{url_for('search_result' , a = 'Sandals')}}"
+                    class="dropdown-item"
+                    >Sandals</a
+                  >
+                  <a
+                    href="{{url_for('search_result' , a = 'Flip Flops')}}"
+                    class="dropdown-item"
+                    >Flipflops</a
+                  >
+                </div>
+              </div>
+
+              <a
+                href="{{url_for('search_result_mastercategory' , a = 'Personal Care')}}"
+                class="nav-item nav-link"
+                >Personal Care</a
+              >
+              <a
+                href="{{url_for('search_result_mastercategory' , a = 'Accessories')}}"
+                class="nav-item nav-link"
+                >Accessories</a
+              >
+            </div>
+          </nav>
+        </div>
+        <div class="col-lg-9">
+          <nav
+            class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0"
+          >
+            <a href="" class="text-decoration-none d-block d-lg-none">
+              <h1 class="m-0 display-5 font-weight-semi-bold">
+                <span class="text-primary font-weight-bold border px-3 mr-1"
+                  >E</span
+                >Shopper
+              </h1>
+            </a>
+            <button
+              type="button"
+              class="navbar-toggler"
+              data-toggle="collapse"
+              data-target="#navbarCollapse"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-between"
+              id="navbarCollapse"
+            >
+              <div class="navbar-nav mr-auto py-0">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="shop.html" class="nav-item nav-link">Shop</a>
+                <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                <div class="nav-item dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    >Pages</a
+                  >
+                  <div class="dropdown-menu rounded-0 m-0">
+                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
+                    <a href="checkout.html" class="dropdown-item">Checkout</a>
+                  </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+              </div>
+              {% if session.logged_in %}
+              <div class="navbar-nav ml-auto py-0">
+                <a href="{{url_for('logout')}}" class="nav-item nav-link"
+                  >Logout</a
+                >
+              </div>
+              {% else %}
+              <div class="navbar-nav ml-auto py-0">
+                <a href="{{url_for('login')}}" class="nav-item nav-link"
+                  >Login</a
+                >
+                <a href="{{url_for('signup')}}" class="nav-item nav-link"
+                  >Register</a
+                >
+              </div>
+              {% endif %}
+            </div>
+          </nav>
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %}
+          <div
+            class="alert alert-{{ category }} alert-dismissible fade show"
+            role="alert"
+          >
+            {{ message }}
+          </div>
+          {% endfor %} {% endif %} {% endwith %} {% block carousel %}{% endblock
+          carousel %}
+        </div>
+      </div>
+    </div>
+    <!-- Navbar End -->
+    {% block body %}{% endblock body %}
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"
+      ><i class="fa fa-angle-double-up"></i
+    ></a>
+
+    <script>
+      a1 = document.getElementById("suggestion1");
+      a2 = document.getElementById("suggestion2");
+      a3 = document.getElementById("suggestion3");
+      a4 = document.getElementById("suggestion4");
+      a5 = document.getElementById("suggestion5");
+      a6 = document.getElementById("suggestion6");
+      a7 = document.getElementById("suggestion7");
+
+      function sname_ret() {
+        var sno = document.getElementById("sid").value;
+        var xhr;
+        if (window.XMLHttpRequest) {
+          // Mozilla, Safari, ...
+          xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+          // IE 8 and older
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        var data = sno;
+        if (sno == "") {
+          return;
+        }
+        xhr.open("POST", "/search/" + data, true);
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+        xhr.send(data);
+        xhr.onreadystatechange = display_data;
+
+        function display_data() {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              //alert(xhr.responseText);
+              console.log(xhr.responseText);
+              var out_string = xhr.responseText.split("`");
+              var rah = 0;
+              for (let index = 0; index < parseInt(out_string[0]); index++) {
+                if (out_string[index + 1] == "") {
+                  rah++;
+                  break;
+                }
+                document.getElementById("suggestion" + (index + 1)).innerHTML =
+                  out_string[index + 1];
+                a1 = document.getElementById("suggestion" + (index + 1));
+                a1.style.display = "";
+                var sim = out_string[index + 1];
+                a1.href =
+                  "{{ url_for('search_result', a = 'ADDSHARE2') }}".replace(
+                    "ADDSHARE2",
+                    sim
+                  );
+                rah++;
+              }
+              //  remain = 7 - rah;
+              for (let inh = rah; inh <= 7; inh++) {
+                a1 = document.getElementById("suggestion" + inh);
+                a1.style.display = "none";
+              }
+              a1 = document.getElementById("suggestion1");
+            } else {
+              alert("There was a problem with the request.");
+            }
+          }
+        }
+      }
+      var ignoreClickOnMeElement = document.getElementById("myDropdownmenu");
+
+      document.addEventListener("click", function (event) {
+        var isClickInsideElement = ignoreClickOnMeElement.contains(
+          event.target
+        );
+        if (!isClickInsideElement) {
+          a1 = document.getElementById("suggestion1");
+          a1.style.display = "none";
+          a2.style.display = "none";
+          a3.style.display = "none";
+          a4.style.display = "none";
+          a5.style.display = "none";
+          a6.style.display = "none";
+          a7.style.display = "none";
+        }
+      });
+    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/lib/easing/easing.min.js"></script>
+    <script src="../static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="../static/mail/jqBootstrapValidation.min.js"></script>
+
+    <script src="../static/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../static/js/main.js"></script>
+  </body>
+</html>
