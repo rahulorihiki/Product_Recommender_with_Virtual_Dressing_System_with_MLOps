@@ -216,7 +216,9 @@ def product_detail():
     cursor1 = connection1.cursor()
     cursor1.execute("SELECT * FROM 'products' where id = ? " , (str(id),) )
     # fashion_d = cursor1.fetchall()
-    with open("main/static/fashion-dataset/styles/" +str(id)+".json") as f:
+    # with open("main/static/fashion-dataset/styles/" +str(id)+".json") as f:
+    #     data = json.load(f)
+    with open("main/static/fashion-dataset/styles/37812.json") as f:
         data = json.load(f)
     valval0 = data["data"]["styleImages"]["default"]["imageURL"]
     # For the Back image perspective
