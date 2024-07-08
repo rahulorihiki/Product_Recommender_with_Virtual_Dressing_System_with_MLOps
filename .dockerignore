@@ -1,0 +1,9 @@
+main/static/fashion-dataset/styles
+downloaded_artifacts/
+artifacts/
+.dvc/config.local
+.dvc/tmp
+.dvc/cache
+env/
+research/
+logs/
