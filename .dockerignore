@@ -1,5 +1,4 @@
-main/static/fashion-dataset/styles
-downloaded_artifacts/
+downloaded_artifacts/*
 artifacts/
 .dvc/config.local
 .dvc/tmp
