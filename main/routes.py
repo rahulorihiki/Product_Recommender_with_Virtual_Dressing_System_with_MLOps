@@ -218,6 +218,7 @@ def product_detail():
     # fashion_d = cursor1.fetchall()
     # with open("main/static/fashion-dataset/styles/" +str(id)+".json") as f:
     #     data = json.load(f)
+    # Hardcoding the id for now for deployment purposes
     with open("main/static/fashion-dataset/styles/37812.json") as f:
         data = json.load(f)
     valval0 = data["data"]["styleImages"]["default"]["imageURL"]
