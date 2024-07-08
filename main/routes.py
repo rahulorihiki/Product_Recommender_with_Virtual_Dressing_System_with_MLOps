@@ -19,14 +19,38 @@ import pandas as pd
 import requests
 from PIL import Image
 from io import BytesIO
+import gdown
+
+def download_file_from_google_drive(url, dest_path):
+    # Function to download file from Google Drive
+    response = requests.get(url)
+    response.raise_for_status()  # Ensure the request was successful
+
+    with open(dest_path, 'wb') as f:
+        f.write(response.content)
 
 app_config = ConfigurationManager().get_app_config()
 # Feature list extraction from pkl file
-feature_list = np.array(pickle.load(open(app_config.extracted_features_path,'rb')))
-filenames = pickle.load(open(app_config.filenames_path,'rb'))
+# download_file_from_google_drive(app_config.extracted_features_path,'downloaded_artifacts/features.pkl')
+# download_file_from_google_drive(app_config.filenames_path,'downloaded_artifacts/filenames.pkl')
+# download_file_from_google_drive(app_config.model_path,'downloaded_artifacts/model.h5')
+
+gdown.download(app_config.extracted_features_path, 'downloaded_artifacts/features.pkl', quiet=False)
+gdown.download(app_config.filenames_path, 'downloaded_artifacts/filenames.pkl', quiet=False)
+gdown.download(app_config.model_path, 'downloaded_artifacts/model.h5', quiet=False)
+
+feature_list = np.array(pickle.load(open('downloaded_artifacts/features.pkl','rb')))
+# with open('downloaded_artifacts/features.pkl', 'rb') as f:
+#     feature_list = np.array(pickle.load(f))
+
+filenames = pickle.load(open('downloaded_artifacts/filenames.pkl','rb'))
+# with open('downloaded_artifacts/filenames.pkl', 'rb') as f:
+#     filenames = np.array(pickle.load(f))
 
 # Load the model
-model = load_model(app_config.model_path)
+model = load_model('downloaded_artifacts/model.h5')
+# with open('downloaded_artifacts/model.h5', 'rb') as f:
+#     model = np.array(pickle.load(f))
 
 # Read the excel file that contains image id and the corresponding image url
 image_df = pd.read_csv(app_config.image_df_path)

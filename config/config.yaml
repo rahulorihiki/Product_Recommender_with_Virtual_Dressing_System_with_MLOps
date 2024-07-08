@@ -18,9 +18,9 @@ feature_extraction:
   local_data_file: artifacts/data_ingestion/images
 
 flask_app:
-  extracted_features_path: artifacts/features/model.pkl
-  filenames_path: artifacts/filenames/filenames.pkl
-  model_path: artifacts/prepare_base_model/base_model_updated.h5
+  extracted_features_path: https://drive.google.com/uc?id=1Gm58FRaSHK9oMKkaXQ3mlfSgyCfMwkVv
+  filenames_path: https://drive.google.com/uc?id=19ewc88yGEeBZ_MtXRQDg5_Np4rubOWTX
+  model_path: https://drive.google.com/uc?id=1cjCIO11eekPI0Je1fVUJMqHmAOLkO9f-
   knn_neighbors: 6
   knn_metric: euclidean
   knn_algorithm: brute
