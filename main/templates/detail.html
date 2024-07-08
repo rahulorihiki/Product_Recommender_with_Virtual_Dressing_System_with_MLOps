@@ -21,7 +21,7 @@ carousel%}
           <div class="carousel-item active">
             <img
               class="w-100 h-100"
-              src="../static/fashion-dataset/images/{{data_obj['id']}}.jpg"
+              src="{{data_obj['default_img_url']}}"
               alt="Image"
             />
           </div>
@@ -335,16 +335,12 @@ carousel%}
   <div class="row px-xl-5">
     <div class="col">
       <div class="owl-carousel related-carousel">
-        {% for in in ind %}
+        {% for image in images %}
         <div class="card product-item border-0">
           <div
             class="card-header product-img position-relative overflow-hidden bg-transparent border p-0"
           >
-            <img
-              class="img-fluid w-100"
-              src="../static/fashion-dataset/images/{{in}}"
-              alt=""
-            />
+            <img class="img-fluid w-100" src="{{image[1]}}" alt="" />
           </div>
           <div
             class="card-body border-left border-right text-center p-0 pt-4 pb-3"
@@ -359,7 +355,7 @@ carousel%}
             class="card-footer d-flex justify-content-between bg-light border"
           >
             <a
-              href="{{url_for('product_detail' , id = in[:-4])}}"
+              href="{{url_for('product_detail' , id = image[0][:-4])}}"
               class="btn btn-sm text-dark p-0"
               ><i class="fas fa-eye text-primary mr-1"></i>View Detail</a
             >

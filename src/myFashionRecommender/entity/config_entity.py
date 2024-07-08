@@ -39,5 +39,6 @@ class AppConfig:
     knn_neighbors: int
     knn_algorithm: str
     knn_metric: str
+    image_df_path: Path
 
     

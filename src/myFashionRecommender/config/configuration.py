@@ -79,7 +79,8 @@ class ConfigurationManager:
             model_path= app_config.model_path,
             knn_neighbors= app_config.knn_neighbors,
             knn_algorithm= app_config.knn_algorithm,
-            knn_metric= app_config.knn_metric
+            knn_metric= app_config.knn_metric,
+            image_df_path= app_config.image_df_path,
         )
         return app_config
 

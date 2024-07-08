@@ -236,22 +236,18 @@ block carousel%}
             </div>
           </div>
         </div>
-        {% for item in pro %}
+        {% for item in final_pro %}
         <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
           <div class="card product-item border-0 mb-4">
             <div
               class="card-header product-img position-relative overflow-hidden bg-transparent border p-0"
             >
-              <img
-                class="img-fluid w-100"
-                src="../static/fashion-dataset/images/{{item[1]}}.jpg"
-                alt=""
-              />
+              <img class="img-fluid w-100" src="{{item[2]}}" alt="" />
             </div>
             <div
               class="card-body border-left border-right text-center p-0 pt-4 pb-3"
             >
-              <h6 class="text-truncate mb-3">{{item[-1]}}</h6>
+              <h6 class="text-truncate mb-3">{{item[1]}}</h6>
               <div class="d-flex justify-content-center">
                 <h6>$123.00</h6>
                 <h6 class="text-muted ml-2"><del>$123.00</del></h6>
@@ -261,7 +257,7 @@ block carousel%}
               class="card-footer d-flex justify-content-between bg-light border"
             >
               <a
-                href="{{url_for('product_detail' , id = item[1])}}"
+                href="{{url_for('product_detail' , id = item[0])}}"
                 class="btn btn-sm text-dark p-0"
                 ><i class="fas fa-eye text-primary mr-1"></i>View Detail</a
               >

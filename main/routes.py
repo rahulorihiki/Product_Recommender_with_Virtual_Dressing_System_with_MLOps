@@ -15,6 +15,10 @@ from sklearn.neighbors import NearestNeighbors
 from flask_paginate import Pagination
 from tensorflow.keras.models import load_model
 from myFashionRecommender.config.configuration import ConfigurationManager
+import pandas as pd
+import requests
+from PIL import Image
+from io import BytesIO
 
 app_config = ConfigurationManager().get_app_config()
 # Feature list extraction from pkl file
@@ -23,6 +27,9 @@ filenames = pickle.load(open(app_config.filenames_path,'rb'))
 
 # Load the model
 model = load_model(app_config.model_path)
+
+# Read the excel file that contains image id and the corresponding image url
+image_df = pd.read_csv(app_config.image_df_path)
 
 # Fit the Nearest Neighbors model
 neighbors = NearestNeighbors(n_neighbors=app_config.knn_neighbors,algorithm=app_config.knn_algorithm,metric=app_config.knn_metric)
@@ -113,10 +120,15 @@ def search_result(a):
     start_idx = (page - 1) * per_page
     end_idx = start_idx + per_page
     pro = result[start_idx:end_idx]
+    final_pro = []
+    for product in pro:
+        image_name = f'{product[1]}.jpg'
+        image_url = image_df.loc[image_df['filename'] == image_name]['link'].values[0]
+        final_pro.append((product[1],product[-1],image_url))
 
     pagination = Pagination(page=page, per_page=per_page, total=len(result),css_framework='bootstrap4')
 
-    return render_template("shop.html", pro=pro, pagination=pagination)
+    return render_template("shop.html", final_pro=final_pro, pagination=pagination)
 
 
 @app.route("/search-result_subcategory/<a>")
@@ -132,10 +144,15 @@ def search_result_subcategory(a):
     start_idx = (page - 1) * per_page
     end_idx = start_idx + per_page
     pro = result[start_idx:end_idx]
+    final_pro = []
+    for product in pro:
+        image_name = f'{product[1]}.jpg'
+        image_url = image_df.loc[image_df['filename'] == image_name]['link'].values[0]
+        final_pro.append((product[1],product[-1],image_url))
 
     pagination = Pagination(page=page, per_page=per_page, total=len(result),css_framework='bootstrap4')
 
-    return render_template("shop.html", pro=pro,pagination = pagination)
+    return render_template("shop.html", final_pro=final_pro,pagination = pagination)
 
 
 @app.route("/search-result_mastercategory/<a>")
@@ -149,14 +166,27 @@ def search_result_mastercategory(a):
     start_idx = (page - 1) * per_page
     end_idx = start_idx + per_page
     pro = result[start_idx:end_idx]
+    final_pro = []
+    for product in pro:
+        image_name = f'{product[1]}.jpg'
+        image_url = image_df.loc[image_df['filename'] == image_name]['link'].values[0]
+        final_pro.append((product[1],product[-1],image_url))
 
     pagination = Pagination(page=page, per_page=per_page, total=len(result),css_framework='bootstrap4')
 
-    return render_template("shop.html", pro=pro,pagination=pagination)
+    return render_template("shop.html", final_pro=final_pro,pagination=pagination)
 
 
 def recommend(id):
-    img = image.load_img(f'main\\static\\fashion-dataset\\images\\{id}.jpg',target_size=(224,224))
+    image_name = f'{id}.jpg'
+    image_url = image_df.loc[image_df['filename'] == image_name]['link'].values[0]
+    response = requests.get(image_url)
+    response.raise_for_status() # Ensure the request was successful
+    img = Image.open(BytesIO(response.content)) # Open the image from the response
+    # Convert the image to the desired format and resize it
+    if img.mode != "RGB":
+        img = img.convert("RGB")
+    img = img.resize((224, 224))
     img_array = image.img_to_array(img)
     expanded_img_array = np.expand_dims(img_array, axis=0)
     preprocessed_img = preprocess_input(expanded_img_array)
@@ -183,6 +213,7 @@ def product_detail():
     # fashion_d = cursor1.fetchall()
     with open("main/static/fashion-dataset/styles/" +str(id)+".json") as f:
         data = json.load(f)
+    valval0 = data["data"]["styleImages"]["default"]["imageURL"]
     # For the Back image perspective
     try:
         data["data"]["styleImages"]["back"]["imageURL"]
@@ -220,6 +251,7 @@ def product_detail():
         "usage" : data["data"]["usage"],
         "productAttribute" : data["data"]["articleAttributes"],
         "brandInfo" : data["data"]["brandUserProfile"],
+        "default_img_url" : valval0,
         "back_img_url" : valval1,
         "left_img_url" : valval2,
         "right_img_url" : valval3,
@@ -229,7 +261,12 @@ def product_detail():
 
     #Doing the recommendation part
     ind = recommend(data_obj['id'])
-    return render_template("detail.html" , data_obj = data_obj , len1 = len1 , len2 = len2 , ind = ind)
+    images = []
+    for i in ind:
+        image_name = i
+        image_url = image_df.loc[image_df['filename'] == image_name]['link'].values[0]
+        images.append([i,image_url])
+    return render_template("detail.html" , data_obj = data_obj , len1 = len1 , len2 = len2 , images = images)
 
 
 

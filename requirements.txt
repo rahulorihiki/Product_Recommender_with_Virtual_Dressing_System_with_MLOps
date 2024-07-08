@@ -18,4 +18,5 @@ flask-wtf
 scikit-learn
 flask-paginate
 email-validator
+pandas
 -e .

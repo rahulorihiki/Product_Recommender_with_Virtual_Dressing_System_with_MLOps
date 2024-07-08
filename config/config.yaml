@@ -24,3 +24,4 @@ flask_app:
   knn_neighbors: 6
   knn_metric: euclidean
   knn_algorithm: brute
+  image_df_path: main/static/fashion-dataset/images.csv
