@@ -162,4 +162,3 @@ cython_debug/
 #.idea/
 artifacts/
 downloaded_artifacts/*
-/main/static/fashion-dataset/styles

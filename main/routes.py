@@ -20,6 +20,8 @@ import requests
 from PIL import Image
 from io import BytesIO
 import gdown
+import zipfile
+import os
 
 app_config = ConfigurationManager().get_app_config()
 
@@ -44,6 +46,20 @@ neighbors.fit(feature_list)
 cursor1 = connection1.cursor()
 cursor1.execute("SELECT DISTINCT articleType FROM 'products' ")
 distinct_fashion = cursor1.fetchall()
+
+zip_file_path = "downloaded_artifacts/jsondata.zip"
+# Extract the styles.zip file from Google Drive
+prefix = "https://drive.google.com/uc?/export=download&id=1s4TYAy4NYjNvIp0RCdJKNLsuqPFqpFgb"
+gdown.download(prefix, zip_file_path, quiet=False)
+
+# Unzip the styles.zip file
+if os.path.exists(zip_file_path): # Check if the file exists
+    with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+        # Extract all the contents into the same directory as the zip file
+        zip_ref.extractall(os.path.splitext(zip_file_path)[0])
+    print(f"{zip_file_path} has been unzipped successfully.")
+else:
+    print(f"The file {zip_file_path} does not exist.")
 
 def login_required(view_func):
     @wraps(view_func)
@@ -212,14 +228,7 @@ def recommend(id):
 @login_required
 def product_detail():
     id = request.args.get('id' , type = int)
-    # id = 39386
-    cursor1 = connection1.cursor()
-    cursor1.execute("SELECT * FROM 'products' where id = ? " , (str(id),) )
-    # fashion_d = cursor1.fetchall()
-    # with open("main/static/fashion-dataset/styles/" +str(id)+".json") as f:
-    #     data = json.load(f)
-    # Hardcoding the id for now for deployment purposes
-    with open("main/static/fashion-dataset/styles/37812.json") as f:
+    with open("downloaded_artifacts/jsondata/styles/" +str(id)+".json") as f:
         data = json.load(f)
     valval0 = data["data"]["styleImages"]["default"]["imageURL"]
     # For the Back image perspective
