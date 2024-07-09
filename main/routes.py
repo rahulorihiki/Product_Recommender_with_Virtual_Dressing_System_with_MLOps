@@ -25,6 +25,16 @@ import os
 
 app_config = ConfigurationManager().get_app_config()
 
+folder_path = "downloaded_artifacts"
+
+# Check if the directory already exists
+if not os.path.exists(folder_path):
+    os.makedirs(folder_path)
+    print(f"Directory '{folder_path}' created.")
+else:
+    print(f"Directory '{folder_path}' already exists.")
+
+
 gdown.download(app_config.extracted_features_path, 'downloaded_artifacts/features.pkl', quiet=False)
 gdown.download(app_config.filenames_path, 'downloaded_artifacts/filenames.pkl', quiet=False)
 gdown.download(app_config.model_path, 'downloaded_artifacts/model.h5', quiet=False)
