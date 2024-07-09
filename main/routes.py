@@ -121,7 +121,7 @@ def search(data):
         try:
             (elements[0].lower()).index(data)
         except ValueError:
-            pass  # do nothing!
+            pass  
         else:
             fashion_list.append(elements[0])
 
