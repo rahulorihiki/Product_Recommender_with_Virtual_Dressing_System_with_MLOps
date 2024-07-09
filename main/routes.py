@@ -61,6 +61,7 @@ if os.path.exists(zip_file_path): # Check if the file exists
 else:
     print(f"The file {zip_file_path} does not exist.")
 
+# create login required decorator function to protect routes that require login access.
 def login_required(view_func):
     @wraps(view_func)
     def wrapped_view(*args, **kwargs):
