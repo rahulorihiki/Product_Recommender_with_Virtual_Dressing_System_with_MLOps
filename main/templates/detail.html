@@ -1,5 +1,71 @@
-{% extends 'base.html' %} {% block title %} Our Shop{% endblock title %} {%block
-carousel%}
+{% extends 'base.html' %} {% block title %} Our Shop{% endblock title %} {%
+block styles %}
+<style>
+  #rahul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+  }
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 18%;
+    overflow: hidden;
+  }
+  .product-card img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .product-card:hover img {
+    transform: scale(1.1);
+  }
+  .product-card .buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f8f8;
+  }
+  .product-card .buttons a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  .product-card .buttons a:hover {
+    background-color: #ddd;
+  }
+  .product-card .buttons a.view-detail {
+    color: #3498db;
+    border-color: #3498db;
+  }
+  .product-card .buttons a.add-to-cart {
+    color: #e74c3c;
+    border-color: #e74c3c;
+  }
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-card {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>
+{% endblock styles %} {%block carousel%}
 
 <div
   class="position-relative overflow-hidden p-3 text-center bg-light"
@@ -257,7 +323,7 @@ carousel%}
                 </div>
                 <div class="media-body">
                   <h6>
-                    John Doe<small> - <i>01 Jan 2045</i></small>
+                    Mahima Verma<small> - <i>04 Feb 2045</i></small>
                   </h6>
                   <div class="text-primary mb-2">
                     <i class="fas fa-star"></i>
@@ -269,7 +335,7 @@ carousel%}
                   <p>
                     Diam amet duo labore stet elitr ea clita ipsum, tempor
                     labore accusam ipsum et no at. Kasd diam tempor rebum magna
-                    dolores sed sed eirmod ipsum.
+                    dolores sed sed eirmod ipsum. Sab Dash hai except for rahul.
                   </p>
                 </div>
               </div>
@@ -326,7 +392,7 @@ carousel%}
 <!-- Shop Detail End -->
 
 <!-- Products Start -->
-<div class="container-fluid py-5">
+<!-- <div class="container-fluid py-5">
   <div class="text-center mb-4">
     <h2 class="section-title px-5">
       <span class="px-2">You May Also Like</span>
@@ -344,13 +410,13 @@ carousel%}
           </div>
           <div
             class="card-body border-left border-right text-center p-0 pt-4 pb-3"
-          >
-            <!-- <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+          > -->
+<!-- <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
             <div class="d-flex justify-content-center">
               <h6>$123.00</h6>
               <h6 class="text-muted ml-2"><del>$123.00</del></h6>
             </div> -->
-          </div>
+<!-- </div>
           <div
             class="card-footer d-flex justify-content-between bg-light border"
           >
@@ -369,7 +435,29 @@ carousel%}
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- Products End -->
+<div>
+  <div class="text-center mb-4">
+    <h2 class="section-title px-5">
+      <span class="px-2">You May Also Like</span>
+    </h2>
+  </div>
+  <div class="container-fluid py-5" id="rahul">
+    {% for image in images %}
+    <div class="product-card">
+      <img src="{{image[1]}}" alt="Product" />
+      <div class="buttons">
+        <a
+          href="{{url_for('product_detail' , id = image[0][:-4])}}"
+          class="view-detail"
+          >View Detail</a
+        >
+        <a href="#" class="add-to-cart">Add To Cart</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock body %}
