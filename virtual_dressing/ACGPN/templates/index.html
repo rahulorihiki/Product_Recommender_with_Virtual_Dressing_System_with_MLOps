@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Outfit Oracle</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='images/favicon.png')}}" rel="icon">
+  <link href="{{ url_for('static', filename='images/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.cssvendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Ninestars
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<style>
+        /* Custom carousel container styling */
+        #carouselContainer {
+            position: relative;
+            height: 100vh; /* Adjust height as needed */
+            overflow: hidden;
+        }
+
+        /* Centered content within the carousel */
+        .carousel-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #000000; /* Text color */
+        }
+    </style>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1 class="text-light"><a href="home"><span>Outfit Oracle</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/images/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="home">Home</a></li>
+          <li><a class="nav-link scrollto" href="women">Try Out Room</a></li>
+          <li><a class="nav-link scrollto" href="http://127.0.0.1:5000/">Exit</a></li>
+          <!--<li><a class="nav-link scrollto" href="guidelines">Guidelines</a></li>-->
+          <!-- <li><a class="nav-link scrollto" href="contact">Contact</a></li> -->
+          <!--
+          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          -->
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <!--<section id="hero" class="d-flex align-items-center">-->
+  <!--  <div class="container">-->
+  <!--    <div class="row gy-4">-->
+  <!--      <div class="d">-->
+  <!--        <h1 style="text-align: center">Virtual Try On</h1>-->
+  <!--        <h3 style = "text-align: center">Your Personalized Fashion Haven. </h3>-->
+  <!--        <p style = "text-align:center">Explore, create, and indulge in a world of fashion possibilities with our interactive virtual wardrobe.</p>-->
+          <!--
+  <!--        <div>-->
+  <!--          <a href="#about" class="btn-get-started scrollto">Get Started</a>-->
+  <!--        </div>-->
+  <!--        -->-->
+  <!--      </div>-->
+        <!--<div class="col-lg-6 order-1 order-lg-2 hero-img">-->
+        <!--  <img src="{{ url_for('static', filename='images/hero-img.jpg')}}" class="img-fluid animated" alt="">-->
+        <!--</div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+<!-- Bootstrap Carousel -->
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <!-- Carousel Background Image -->
+            <img src="{{ url_for('static', filename='images/bg22.jpg')}}" style="opacity: 0.4;height:90vh" class="d-block w-100" alt="Carousel Background">
+            <!-- Carousel Content (Centered Text) -->
+            <div class="carousel-content">
+                <div class="container">
+                    <div class="row gy-4">
+                        <div class="col-md-12">
+                            <h1><strong>Virtual Try On</strong></h1>
+                            <h3><strong>Your Personalized Fashion Haven.</strong></h3>
+                            <p><strong>Explore, create, and indulge in a world of fashion possibilities with our interactive virtual wardrobe.</strong></p>
+                            <!-- Add additional content or buttons here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row justify-content-between">
+          <div class="col-lg-5 d-flex align-items-center justify-content-center about-img">
+            <img src="{{ url_for('static', filename='images/tryonresult.png')}}" class="img-fluid" alt=""
+              data-aos="zoom-in">
+          </div>
+          <div class="col-lg-6 pt-5 pt-lg-0">
+            <h3 data-aos="fade-up">Modules in our Model</h3>
+            <h5 align="justify" data-aos="fade-up" data-aos-delay="100">
+              <br>
+              <h4 class="title"><a href="">1) Semantic Generation Module</a></h4>
+             This module generates detailed semantic descriptions of clothing items, including style, color, material, and fit, enabling accurate virtual representation and personalized styling recommendations.
+              <br>
+              <br>
+              <h4 class="title"><a href="">2) Clothes Wraping Module</a></h4>
+               The clothes wrapping module applies advanced algorithms to seamlessly drape virtual garments onto user-provided images, enabling realistic virtual try-ons and accurate visualization of clothing items.
+              <br>
+              <br>
+              <h4 class="title"><a href="">3) Content Fusion Module</a></h4>
+             The content fusion module intelligently combines user preferences, current fashion trends, and personalized styling suggestions to create cohesive and inspiring fashion content, delivering a curated and engaging virtual dressing experience.
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+           <h2>Guidelines</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 col-lg-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h3 class="title">Step 1</h3>
+              <p class="description">Go to Try Out Room section. Upload your image by clicking on "Choose File" button and select your image.
+Your posture should be erect with a plane background. </p>
+                <br>
+              <div class="text-color">
+                    <p data-aos="fade-up" data-aos-delay="100">
+                        Note: The minimum size of the image must be 8KB and maximum limit is 2MB.
+                    </p>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-md-8 col-lg-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h3 class="title">Step 2</h3>
+              <p class="description">Upload your desired cloth image by clicking on "Choose File" button and select the image of the cloth you wish to try it on yourself.</p>
+              <br>
+              <br>
+              <div class="text-color">
+                    <p data-aos="fade-up" data-aos-delay="100">
+                        Note: The minimum size of the image must be 8KB and maximum limit is 2MB.
+                    </p>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-md-8 col-lg-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h3 class="title">Step 3</h3>
+              <p class="description">Click on the "Submit" button to see the result.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <p>Contact us the get started</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>Sector 16, New Panvel, India</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>outfitoracle@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+912 345 67890</p>
+              </div>
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.6694342833944!2d73.12548141484996!3d18.9902009871372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e866de88667f%3A0xc1c5d5badc610f5f!2sPillai%20College%20of%20Engineering%2C%20New%20Panvel%20(Autonomous)!5e0!3m2!1sen!2sin!4v1681200445536!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group col-md-6 mt-3 mt-md-0">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Us Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-8 footer-contact">
+            <h3>Outfit Oracle</h3>
+            <p>
+              Pillai College of Engineering <br>
+              New Panvel<br>
+              India <br><br>
+              <strong>Phone:</strong> +912 345 67890<br>
+              <strong>Email:</strong> outfitoracle@gmail.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-4 col-md-8 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="home">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="women">Women</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="guidelines">Guidelines</a></li>
+              <!-- <li><i class="bx bx-chevron-right"></i> <a href="contact">Contact</a></li> -->
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-8 footer-links">
+            <h4>About our Project</h4>
+            <p>Virtual try-on means that consumers try on cloth virtually using their phones or tablets.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='vendor/aos/aos.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js')}}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+</body>
+
+</html>

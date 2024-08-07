@@ -162,3 +162,9 @@ cython_debug/
 #.idea/
 artifacts/
 downloaded_artifacts/*
+
+# Take the below files from the drive where these files are also present
+virtual_dressing/ACGPN/lip_final.pth
+virtual_dressing/ACGPN/pose/pose_iter_440000.caffemodel
+virtual_dressing/ACGPN/U-2-Net/saved_models/u2net/u2net.pth
+virtual_dressing/ACGPN/lip_final.pth
