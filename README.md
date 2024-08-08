@@ -11,7 +11,8 @@ This Project Recommendation System provides an interactive shopping experience, 
 5. [Machine Learning Models](#machine-learning-models)
 6. [Dataset Used](#dataset-used)
 7. [MLOps Workflow](#mlops-workflow-followed-in-the-project)
-8. [AWS-CICD-Deployment-with-Github-Actions](#aws-cicd-deployment-with-github-actions)
+8. [Dagshub MLFLOW Configuration](#dagshub-mlflow-configurations)
+9. [AWS-CICD-Deployment-with-Github-Actions](#aws-cicd-deployment-with-github-actions)
    - [Login to AWS Console](#1-login-to-aws-console)
    - [Create IAM User for Deployment](#2-create-iam-user-for-deployment)
    - [Create ECR Repo](#3-create-ecr-repo-to-storesave-docker-image)
@@ -19,10 +20,10 @@ This Project Recommendation System provides an interactive shopping experience, 
    - [Install Docker in EC2 Machine](#5-open-ec2-and-install-docker-in-ec2-machine)
    - [Configure EC2 as Self-Hosted Runner](#6-configure-ec2-as-self-hosted-runner)
    - [Setup GitHub Secrets](#7-setup-github-secrets)
-9. [Contributing](#contributing)
-10. [License](#license)
-11. [Contact Information](#contact-information)
-12. [Citation](#citation)
+10. [Contributing](#contributing)
+11. [License](#license)
+12. [Contact Information](#contact-information)
+13. [Citation](#citation)
 
 ## Features
 
@@ -65,7 +66,7 @@ This Project Recommendation System provides an interactive shopping experience, 
 8. Update the main.py
 9. Update the dvc.yaml
 
-### dagshub
+## Dagshub MLFLOW Configurations
 
 [dagshub](https://dagshub.com/)
 
