@@ -25,13 +25,13 @@ except Exception as e:
     logger.exception(e)
     raise e
 
-STAGE_NAME = "Filenames and Feature Extraction"
-try:
-    logger.info(f"*******************")
-    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-    obj = FeatureExtractionPipeline()
-    obj.main()
-    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
-except Exception as e:
-    logger.exception(e)
-    raise e
+# STAGE_NAME = "Filenames and Feature Extraction"
+# try:
+#     logger.info(f"*******************")
+#     logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+#     obj = FeatureExtractionPipeline()
+#     obj.main()
+#     logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+# except Exception as e:
+#     logger.exception(e)
+#     raise e

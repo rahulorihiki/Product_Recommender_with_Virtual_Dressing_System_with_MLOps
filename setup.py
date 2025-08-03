@@ -8,9 +8,12 @@ with open("README.md", "r", encoding="utf-8") as f:
 __version__ = "0.0.0"
 
 # Write the name of the repository where the code is stored and the corresponding author name and email
-REPO_NAME = "Fashion_Recommender_with_MLOps_EndtoEnd"
+REPO_NAME = "Product_Recommender_with_Virtual_Dressing_System_with_MLOps"
 AUTHOR_USER_NAME = "rahulorihiki"
-SRC_REPO = "myFashionRecommender" # This is the name of the package. It should be the same as the name of the directory where the code is stored i.e. basically it should be same as "project_name" variable in template.py. We can install the pacakge as pip install myFashionRecommender.
+SRC_REPO = "myFashionRecommender" # This is the name of the package. 
+# It should be the same as the name of the directory where the code is stored i.e. basically 
+# it should be same as "project_name" variable in template.py. We can install the pacakge as 
+# pip install myFashionRecommender.
 AUTHOR_EMAIL = "krahulgovind@gmail.com"
 
 # Setup the package details, giving a basic description to the package

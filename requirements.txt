@@ -1,10 +1,12 @@
 pyYAML
-ensure==1.0.2
+# ensure==1.0.2
+typeguard
 python-box==6.0.2
 joblib
 notebook
 gdown
-tensorflow==2.12.0
+# tensorflow==2.12.0
+tensorflow
 numpy
 tqdm
 pillow

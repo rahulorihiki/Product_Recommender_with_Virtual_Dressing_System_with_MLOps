@@ -4,7 +4,8 @@ import yaml
 from myFashionRecommender import logger
 import json
 import joblib
-from ensure import ensure_annotations
+# from ensure import ensure_annotations
+from typeguard import typechecked
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
@@ -16,7 +17,8 @@ import base64
 
 # The below code is to read the yaml file (yaml file is a file that stores configuration details in a key-value pair format) and return the data in a ConfigBox format. 
 # Now I have to read yaml in every component, hence I have included it in the common.py utility file so as to avoid writing the same repetitive code again and again in every component.
-@ensure_annotations
+# @ensure_annotations ( In the lecture he used this but it is not compatible with python 3.10 and above, so I have used typechecked instead of ensure_annotations)
+@typechecked
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """reads yaml file and returns
 
@@ -42,7 +44,8 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     
 
 
-@ensure_annotations #It makes sure that the function is given that input only which is has been defined to take and also the function only returns output which it has been defined to give as output. If the function is given any other input or returns any other output, it will throw an error.
+# @ensure_annotations #It makes sure that the function is given that input only which is has been defined to take and also the function only returns output which it has been defined to give as output. If the function is given any other input or returns any other output, it will throw an error.
+@typechecked
 def create_directories(path_to_directories: list, verbose=True):
     """create list of directories
 
@@ -56,7 +59,8 @@ def create_directories(path_to_directories: list, verbose=True):
             logger.info(f"created directory at: {path}")
 
 
-@ensure_annotations
+# @ensure_annotations
+@typechecked
 def save_json(path: Path, data: dict):
     """save json data
 
@@ -72,7 +76,8 @@ def save_json(path: Path, data: dict):
 
 
 
-@ensure_annotations
+# @ensure_annotations
+@typechecked
 def load_json(path: Path) -> ConfigBox:
     """load json files data
 
@@ -89,7 +94,8 @@ def load_json(path: Path) -> ConfigBox:
     return ConfigBox(content)
 
 
-@ensure_annotations
+# @ensure_annotations
+@typechecked
 def save_bin(data: Any, path: Path):
     """save binary file
 
@@ -101,7 +107,8 @@ def save_bin(data: Any, path: Path):
     logger.info(f"binary file saved at: {path}")
 
 
-@ensure_annotations
+# @ensure_annotations
+@typechecked
 def load_bin(path: Path) -> Any:
     """load binary data
 
@@ -115,7 +122,8 @@ def load_bin(path: Path) -> Any:
     logger.info(f"binary file loaded from: {path}")
     return data
 
-@ensure_annotations
+# @ensure_annotations
+@typechecked
 def get_size(path: Path) -> str:
     """get size in KB
 

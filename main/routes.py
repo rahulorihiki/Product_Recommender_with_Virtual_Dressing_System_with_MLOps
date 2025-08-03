@@ -22,6 +22,7 @@ from io import BytesIO
 import gdown
 import zipfile
 import os
+import tensorflow
 
 app_config = ConfigurationManager().get_app_config()
 
@@ -37,13 +38,9 @@ else:
 
 gdown.download(app_config.extracted_features_path, 'downloaded_artifacts/features.pkl', quiet=False)
 gdown.download(app_config.filenames_path, 'downloaded_artifacts/filenames.pkl', quiet=False)
-gdown.download(app_config.model_path, 'downloaded_artifacts/model.h5', quiet=False)
 
 feature_list = np.array(pickle.load(open('downloaded_artifacts/features.pkl','rb')))
 filenames = pickle.load(open('downloaded_artifacts/filenames.pkl','rb'))
-
-# Load the model
-model = load_model('downloaded_artifacts/model.h5')
 
 # Read the excel file that contains image id and the corresponding image url
 image_df = pd.read_csv(app_config.image_df_path)
@@ -57,19 +54,37 @@ cursor1 = connection1.cursor()
 cursor1.execute("SELECT DISTINCT articleType FROM 'products' ")
 distinct_fashion = cursor1.fetchall()
 
-zip_file_path = "downloaded_artifacts/jsondata.zip"
+zip_file_path1 = "downloaded_artifacts/jsondata.zip"
+zip_file_path2 = "downloaded_artifacts/new_model.zip"
+
 # Extract the styles.zip file from Google Drive
 prefix = "https://drive.google.com/uc?/export=download&id=1s4TYAy4NYjNvIp0RCdJKNLsuqPFqpFgb"
-gdown.download(prefix, zip_file_path, quiet=False)
+gdown.download(prefix, zip_file_path1, quiet=False)
+gdown.download(app_config.model_path, zip_file_path2, quiet=False)
 
 # Unzip the styles.zip file
-if os.path.exists(zip_file_path): # Check if the file exists
-    with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+if os.path.exists(zip_file_path1): # Check if the file exists
+    with zipfile.ZipFile(zip_file_path1, 'r') as zip_ref:
         # Extract all the contents into the same directory as the zip file
-        zip_ref.extractall(os.path.splitext(zip_file_path)[0])
-    print(f"{zip_file_path} has been unzipped successfully.")
+        zip_ref.extractall(os.path.splitext(zip_file_path1)[0])
+    print(f"{zip_file_path1} has been unzipped successfully.")
 else:
-    print(f"The file {zip_file_path} does not exist.")
+    print(f"The file {zip_file_path1} does not exist.")
+
+# Unzip the new_model.zip file
+if os.path.exists(zip_file_path2): # Check if the file exists
+    with zipfile.ZipFile(zip_file_path2, 'r') as zip_ref:
+        # Extract all the contents into the same directory as the zip file
+        zip_ref.extractall(os.path.splitext(zip_file_path2)[0])
+    print(f"{zip_file_path2} has been unzipped successfully.")
+else:
+    print(f"The file {zip_file_path2} does not exist.") 
+
+# Load the model
+model = tensorflow.keras.layers.TFSMLayer(
+    'downloaded_artifacts/new_model/base_model_updated', 
+    call_endpoint='serve'
+)
 
 # create login required decorator function to protect routes that require login access.
 def login_required(view_func):
@@ -222,7 +237,8 @@ def recommend(id):
     img_array = image.img_to_array(img)
     expanded_img_array = np.expand_dims(img_array, axis=0)
     preprocessed_img = preprocess_input(expanded_img_array)
-    result = model.predict(preprocessed_img).flatten()
+
+    result = model(preprocessed_img).numpy().flatten()
     normalized_result = result / norm(result)
 
     distances,indices = neighbors.kneighbors([normalized_result])
